@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Students · Directory and profile</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0F5E4D}a:hover{color:#0B4538}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.num{font-variant-numeric:tabular-nums}
+</style>
+</helmet>
+<div style="min-height: 100vh; display: flex; flex-wrap: wrap; background: #F5F6F8; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #14202E">
+  <div style="flex: 1 1 248px; min-width: 0; background: #FFFFFF; border-right: 1px solid #E3E6EB">
+    <dc-import name="Sidebar" active="students" persona="principal" accent="{{accent}}" hint-size="100%,1000px"></dc-import>
+  </div>
+
+  <div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column">
+    <header style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding: 16px 32px; background: #FFFFFF; border-bottom: 1px solid #E3E6EB">
+      <div style="flex: 1 1 220px; min-width: 0">
+        <p style="margin: 0; font-size: 13px; color: #5E6977">1,218 enrolled · 2026–27</p>
+        <h1 style="margin: 2px 0 0; font-size: 22px; font-weight: 700; letter-spacing: -0.01em">Students</h1>
+      </div>
+      <button type="button" style="height: 44px; padding: 0 16px; display: flex; align-items: center; gap: 8px; border: 1px solid #D5DAE1; border-radius: 10px; background: #FFFFFF; font: inherit; font-size: 14px; font-weight: 600; color: #14202E; cursor: pointer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m17 8-5-5-5 5"></path><path d="M12 3v12"></path></svg>
+        Import from sheet
+      </button>
+      <button type="button" style="height: 44px; padding: 0 16px; display: flex; align-items: center; gap: 8px; border: 0; border-radius: 10px; background: {{accent}}; font: inherit; font-size: 14px; font-weight: 700; color: #FFFFFF; cursor: pointer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+        Add student
+      </button>
+    </header>
+
+    <main style="box-sizing: border-box; width: 100%; padding: 24px 32px 48px; display: flex; flex-direction: column; gap: 16px">
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px">
+        <label style="flex: 1 1 240px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A4654">
+          Search
+          <input type="search" placeholder="Name, admission no. or guardian phone" style="height: 44px; padding: 0 12px; box-sizing: border-box; border: 1px solid #D5DAE1; border-radius: 10px; background: #FFFFFF; font: inherit; font-size: 14px; color: #14202E">
+        </label>
+        <label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A4654">
+          Class
+          <select style="height: 44px; min-width: 130px; padding: 0 12px; border: 1px solid #D5DAE1; border-radius: 10px; background: #FFFFFF; font: inherit; font-size: 14px; color: #14202E"><option>Class 7</option><option>All classes</option></select>
+        </label>
+        <label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A4654">
+          Section
+          <select style="height: 44px; min-width: 130px; padding: 0 12px; border: 1px solid #D5DAE1; border-radius: 10px; background: #FFFFFF; font: inherit; font-size: 14px; color: #14202E"><option>All sections</option><option>7-A</option><option>7-B</option><option>7-C</option></select>
+        </label>
+        <label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A4654">
+          Fees
+          <select style="height: 44px; min-width: 130px; padding: 0 12px; border: 1px solid #D5DAE1; border-radius: 10px; background: #FFFFFF; font: inherit; font-size: 14px; color: #14202E"><option>Any status</option><option>Overdue</option><option>Due this month</option><option>Paid</option></select>
+        </label>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start">
+        <section aria-label="Students in Class 7" style="flex: 3 1 620px; min-width: 0; background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 14px; overflow: hidden">
+          <div style="overflow-x: auto">
+            <table style="width: 100%; min-width: 680px; border-collapse: collapse; font-size: 14px">
+              <thead>
+                <tr style="background: #F9FAFB; border-bottom: 1px solid #E3E6EB">
+                  <th scope="col" style="padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #5E6977">Student</th>
+                  <th scope="col" style="padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #5E6977">Class · Roll</th>
+                  <th scope="col" style="padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #5E6977">Guardian</th>
+                  <th scope="col" style="padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #5E6977">Attendance</th>
+                  <th scope="col" style="padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #5E6977">Fees</th>
+                </tr>
+              </thead>
+              <tbody>
+                <sc-for list="{{rows}}" as="r" hint-placeholder-count="10">
+                  <tr aria-selected="{{r.selected}}" style="border-bottom: 1px solid #EEF0F3; background: {{r.bg}}">
+                    <td style="padding: 10px 16px">
+                      <div style="display: flex; align-items: center; gap: 10px">
+                        <div aria-hidden="true" style="width: 36px; height: 36px; flex: none; border-radius: 50%; background: #EEF0F3; color: #3A4654; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700">{{r.initials}}</div>
+                        <div style="min-width: 0">
+                          <a href="#" style="font-size: 14px; font-weight: 600; color: #14202E; text-decoration: none">{{r.name}}</a>
+                          <p class="num" style="margin: 2px 0 0; font-size: 12px; color: #5E6977">Adm {{r.adm}}</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="num" style="padding: 10px 16px; color: #3A4654">{{r.cls}} · {{r.roll}}</td>
+                    <td style="padding: 10px 16px">
+                      <p style="margin: 0; font-size: 14px">{{r.guardian}}</p>
+                      <p class="num" style="margin: 2px 0 0; font-size: 12px; color: #5E6977">{{r.phone}}</p>
+                    </td>
+                    <td style="padding: 10px 16px">
+                      <div style="display: flex; align-items: center; gap: 8px">
+                        <span class="num" style="width: 36px; font-size: 14px; font-weight: 700; color: {{r.pctFg}}">{{r.pct}}</span>
+                        <div style="width: 64px; height: 6px; border-radius: 3px; background: #EEF0F3; overflow: hidden"><div style="height: 6px; width: {{r.pct}}; border-radius: 3px; background: {{r.barBg}}"></div></div>
+                      </div>
+                    </td>
+                    <td style="padding: 10px 16px">
+                      <span class="num" style="display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; white-space: nowrap; background: {{r.feeBg}}; color: {{r.feeFg}}">{{r.fee}}</span>
+                    </td>
+                  </tr>
+                </sc-for>
+              </tbody>
+            </table>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; padding: 10px 16px; border-top: 1px solid #E3E6EB">
+            <span class="num" style="font-size: 13px; color: #5E6977">1–10 of 118 in Class 7</span>
+            <div style="display: flex; gap: 6px">
+              <button type="button" aria-label="Previous page" style="width: 44px; height: 44px; border: 1px solid #D5DAE1; border-radius: 10px; background: #FFFFFF; color: #3A4654; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg></button>
+              <button type="button" aria-label="Next page" style="width: 44px; height: 44px; border: 1px solid #D5DAE1; border-radius: 10px; background: #FFFFFF; color: #3A4654; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg></button>
+            </div>
+          </div>
+        </section>
+
+        <aside aria-label="Student profile" style="flex: 1 1 340px; min-width: 0; background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 14px; display: flex; flex-direction: column">
+          <div style="display: flex; align-items: flex-start; gap: 14px; padding: 20px 20px 16px">
+            <div aria-hidden="true" style="width: 56px; height: 56px; flex: none; border-radius: 50%; background: {{accentSoft}}; color: {{accent}}; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800">DP</div>
+            <div style="flex: 1; min-width: 0">
+              <h2 style="margin: 0; font-size: 18px; font-weight: 800">Diya Patel</h2>
+              <p class="num" style="margin: 2px 0 0; font-size: 13px; color: #5E6977">Class 7-C · Roll 4 · Adm 2019/0447</p>
+              <span style="display: inline-block; margin-top: 8px; padding: 2px 8px; border-radius: 6px; font-size: 12px; font-weight: 700; background: #DCFCE7; color: #166534">Active</span>
+            </div>
+            <button type="button" aria-label="Close profile" style="width: 44px; height: 44px; flex: none; border: 0; border-radius: 10px; background: transparent; color: #3A4654; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg></button>
+          </div>
+
+          <div role="tablist" aria-label="Profile sections" style="display: flex; gap: 4px; padding: 0 12px; border-bottom: 1px solid #E3E6EB; overflow-x: auto">
+            <button type="button" role="tab" aria-selected="true" style="min-height: 44px; padding: 0 10px; border: 0; border-bottom: 2px solid {{accent}}; background: transparent; font: inherit; font-size: 14px; font-weight: 700; color: {{accent}}; cursor: pointer">Overview</button>
+            <button type="button" role="tab" aria-selected="false" style="min-height: 44px; padding: 0 10px; border: 0; border-bottom: 2px solid transparent; background: transparent; font: inherit; font-size: 14px; font-weight: 500; color: #3A4654; cursor: pointer">Attendance</button>
+            <button type="button" role="tab" aria-selected="false" style="min-height: 44px; padding: 0 10px; border: 0; border-bottom: 2px solid transparent; background: transparent; font: inherit; font-size: 14px; font-weight: 500; color: #3A4654; cursor: pointer">Fees</button>
+            <button type="button" role="tab" aria-selected="false" style="min-height: 44px; padding: 0 10px; border: 0; border-bottom: 2px solid transparent; background: transparent; font: inherit; font-size: 14px; font-weight: 500; color: #3A4654; cursor: pointer">Marks</button>
+            <button type="button" role="tab" aria-selected="false" style="min-height: 44px; padding: 0 10px; border: 0; border-bottom: 2px solid transparent; background: transparent; font: inherit; font-size: 14px; font-weight: 500; color: #3A4654; cursor: pointer">Documents</button>
+          </div>
+
+          <div style="padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 18px">
+            <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+              <div style="padding: 12px; border-radius: 10px; background: #F5F6F8">
+                <p style="margin: 0; font-size: 12px; font-weight: 600; color: #5E6977">Attendance this term</p>
+                <p class="num" style="margin: 4px 0 0; font-size: 22px; font-weight: 800">94%</p>
+                <p style="margin: 2px 0 0; font-size: 12px; color: #5E6977">5 days absent</p>
+              </div>
+              <div style="padding: 12px; border-radius: 10px; background: #FFF7ED">
+                <p style="margin: 0; font-size: 12px; font-weight: 600; color: #9A3412">Fees overdue</p>
+                <p class="num" style="margin: 4px 0 0; font-size: 22px; font-weight: 800; color: #9A3412">₹11,600</p>
+                <p style="margin: 2px 0 0; font-size: 12px; color: #9A3412">since 10 Oct</p>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <h3 style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #5E6977">Guardians</h3>
+              <div style="display: flex; align-items: center; gap: 10px">
+                <div style="flex: 1; min-width: 0">
+                  <p style="margin: 0; font-size: 14px; font-weight: 600">Hetal Patel <span style="font-weight: 500; color: #5E6977">· Mother · primary</span></p>
+                  <p class="num" style="margin: 2px 0 0; font-size: 13px; color: #5E6977">+91 98290 ••962</p>
+                </div>
+                <button type="button" aria-label="Call Hetal Patel" style="width: 44px; height: 44px; flex: none; border: 1px solid #D5DAE1; border-radius: 10px; background: #FFFFFF; color: #3A4654; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"></path></svg></button>
+              </div>
+              <div style="display: flex; align-items: center; gap: 10px">
+                <div style="flex: 1; min-width: 0">
+                  <p style="margin: 0; font-size: 14px; font-weight: 600">Manish Patel <span style="font-weight: 500; color: #5E6977">· Father</span></p>
+                  <p class="num" style="margin: 2px 0 0; font-size: 13px; color: #5E6977">+91 94140 ••208</p>
+                </div>
+                <button type="button" aria-label="Call Manish Patel" style="width: 44px; height: 44px; flex: none; border: 1px solid #D5DAE1; border-radius: 10px; background: #FFFFFF; color: #3A4654; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"></path></svg></button>
+              </div>
+            </div>
+
+            <dl style="margin: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 8px 12px; font-size: 14px">
+              <dt style="color: #5E6977">Date of birth</dt><dd class="num" style="margin: 0; font-weight: 600">14 Mar 2014</dd>
+              <dt style="color: #5E6977">Blood group</dt><dd style="margin: 0; font-weight: 600">B+</dd>
+              <dt style="color: #5E6977">Transport</dt><dd style="margin: 0; font-weight: 600">Route 4 · Vaishali Nagar</dd>
+              <dt style="color: #5E6977">Admitted</dt><dd class="num" style="margin: 0; font-weight: 600">2 Apr 2019, Class 1</dd>
+            </dl>
+
+            <div style="display: flex; flex-direction: column; gap: 8px">
+              <h3 style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #5E6977">Periodic Test 1 · 85 / 100</h3>
+              <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px">
+                <div style="padding: 8px 4px; border-radius: 8px; background: #F5F6F8; text-align: center"><p style="margin: 0; font-size: 11px; color: #5E6977">Maths</p><p class="num" style="margin: 2px 0 0; font-size: 15px; font-weight: 800">17</p></div>
+                <div style="padding: 8px 4px; border-radius: 8px; background: #F5F6F8; text-align: center"><p style="margin: 0; font-size: 11px; color: #5E6977">Science</p><p class="num" style="margin: 2px 0 0; font-size: 15px; font-weight: 800">18</p></div>
+                <div style="padding: 8px 4px; border-radius: 8px; background: #F5F6F8; text-align: center"><p style="margin: 0; font-size: 11px; color: #5E6977">English</p><p class="num" style="margin: 2px 0 0; font-size: 15px; font-weight: 800">16</p></div>
+                <div style="padding: 8px 4px; border-radius: 8px; background: #F5F6F8; text-align: center"><p style="margin: 0; font-size: 11px; color: #5E6977">Hindi</p><p class="num" style="margin: 2px 0 0; font-size: 15px; font-weight: 800">19</p></div>
+                <div style="padding: 8px 4px; border-radius: 8px; background: #F5F6F8; text-align: center"><p style="margin: 0; font-size: 11px; color: #5E6977">SSt</p><p class="num" style="margin: 2px 0 0; font-size: 15px; font-weight: 800">15</p></div>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-wrap: wrap; gap: 8px">
+              <a href="Fees.dc.html" style="flex: 1 1 120px; min-height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 10px; background: {{accent}}; color: #FFFFFF; font-size: 14px; font-weight: 700; text-decoration: none">Collect fee</a>
+              <button type="button" style="flex: 1 1 120px; min-height: 44px; border: 1px solid #D5DAE1; border-radius: 10px; background: #FFFFFF; font: inherit; font-size: 14px; font-weight: 600; color: #14202E; cursor: pointer">Message guardian</button>
+              <button type="button" style="flex: 1 1 120px; min-height: 44px; border: 1px solid #D5DAE1; border-radius: 10px; background: #FFFFFF; font: inherit; font-size: 14px; font-weight: 600; color: #14202E; cursor: pointer">Print ID card</button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#13795B","options":["#13795B","#1D4ED8","#6D28D9","#B45309"]},"$preview":{"width":1440,"height":1120}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accent ?? '#13795B';
+    const data = [
+      ['Aarav Sharma', '2019/0412', '7-B', 1, 'Rakesh Sharma', '••412', 96, 'paid', ''],
+      ['Ananya Gupta', '2019/0433', '7-B', 2, 'Neha Gupta', '••871', 98, 'due', '₹9,800'],
+      ['Arjun Mehta', '2020/0108', '7-A', 3, 'Vikram Mehta', '••305', 88, 'paid', ''],
+      ['Diya Patel', '2019/0447', '7-C', 4, 'Hetal Patel', '••962', 94, 'overdue', '₹11,600'],
+      ['Farhan Khan', '2019/0459', '7-B', 6, 'Salma Khan', '••118', 81, 'due', '₹9,800'],
+      ['Ishita Rao', '2020/0121', '7-A', 8, 'Sunil Rao', '••540', 97, 'paid', ''],
+      ['Meher Kaur', '2019/0488', '7-B', 9, 'Jasleen Kaur', '••693', 90, 'paid', ''],
+      ['Kabir Singh', '2019/0470', '7-C', 10, 'Harpreet Singh', '••227', 92, 'paid', ''],
+      ['Nikhil Verma', '2021/0033', '7-A', 14, 'Ajay Verma', '••784', 76, 'overdue', '₹14,200'],
+      ['Pooja Nair', '2019/0502', '7-C', 15, 'Lakshmi Nair', '••351', 95, 'due', '₹1,600']
+    ];
+    const fees = {
+      paid: { label: () => 'Paid', bg: '#DCFCE7', fg: '#166534' },
+      due: { label: (a) => 'Due ' + a, bg: '#FEF3C7', fg: '#92400E' },
+      overdue: { label: (a) => 'Overdue ' + a, bg: '#FFEDD5', fg: '#9A3412' }
+    };
+    const rows = data.map((d) => {
+      const pct = d[6];
+      const f = fees[d[7]];
+      const selected = d[0] === 'Diya Patel';
+      return {
+        name: d[0],
+        initials: d[0].split(' ').map((w) => w[0]).join(''),
+        adm: d[1],
+        cls: d[2],
+        roll: d[3],
+        guardian: d[4],
+        phone: '+91 ' + d[5],
+        pct: pct + '%',
+        pctFg: pct >= 90 ? '#14202E' : pct >= 80 ? '#92400E' : '#9A3412',
+        barBg: pct >= 90 ? accent : pct >= 80 ? '#D97706' : '#C2410C',
+        fee: f.label(d[8]),
+        feeBg: f.bg,
+        feeFg: f.fg,
+        selected: selected,
+        bg: selected ? accent + '14' : '#FFFFFF'
+      };
+    });
+    return { accent, accentSoft: accent + '1F', rows };
+  }
+}
+</script>
+</body>
+</html>

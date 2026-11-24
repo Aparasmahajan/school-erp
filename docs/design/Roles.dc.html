@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Roles and access</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0F5E4D}a:hover{color:#0B4538}
+.num{font-variant-numeric:tabular-nums}
+</style>
+</helmet>
+<div style="min-height: 100vh; display: flex; flex-wrap: wrap; background: #F5F6F8; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #14202E">
+  <div style="flex: 1 1 248px; min-width: 0; background: #FFFFFF; border-right: 1px solid #E3E6EB">
+    <dc-import name="Sidebar" active="roles" persona="principal" accent="{{accent}}" hint-size="100%,1000px"></dc-import>
+  </div>
+
+  <div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column">
+    <header style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding: 16px 32px; background: #FFFFFF; border-bottom: 1px solid #E3E6EB">
+      <div style="flex: 1 1 320px; min-width: 0">
+        <p style="margin: 0; font-size: 13px; color: #5E6977">Administration</p>
+        <h1 style="margin: 2px 0 0; font-size: 22px; font-weight: 700; letter-spacing: -0.01em">Roles &amp; access</h1>
+      </div>
+      <button type="button" style="height: 44px; padding: 0 16px; border: 1px solid #D5DAE1; border-radius: 10px; background: #FFFFFF; font: inherit; font-size: 14px; font-weight: 600; color: #14202E; cursor: pointer">Preview as a role</button>
+      <button type="button" style="height: 44px; padding: 0 16px; border: 0; border-radius: 10px; background: {{accent}}; font: inherit; font-size: 14px; font-weight: 700; color: #FFFFFF; cursor: pointer">New role</button>
+    </header>
+
+    <main style="box-sizing: border-box; width: 100%; padding: 24px 32px 48px; display: flex; flex-direction: column; gap: 16px">
+      <p style="margin: 0; max-width: 760px; font-size: 14px; line-height: 1.55; color: #3A4654">Each permission sets what a role can do and whose records it reaches. Click a cell to change its reach. Someone holding two roles gets the wider of the two.</p>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; font-size: 13px; color: #3A4654">
+        <span style="display: inline-flex; align-items: center; gap: 8px"><span style="padding: 3px 8px; border-radius: 6px; font-size: 12px; font-weight: 700; background: {{accent}}; color: #FFFFFF">Whole school</span>every record</span>
+        <span style="display: inline-flex; align-items: center; gap: 8px"><span style="padding: 3px 8px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 1px solid {{accentLine}}; background: {{accentSoft}}; color: {{accent}}">Own class</span>sections they lead</span>
+        <span style="display: inline-flex; align-items: center; gap: 8px"><span style="padding: 3px 8px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 1px solid {{accentLine}}; background: {{accentSoft}}; color: {{accent}}">Own sections</span>sections they teach</span>
+        <span style="display: inline-flex; align-items: center; gap: 8px"><span style="padding: 3px 8px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 1px solid #C7CDD6; background: #FFFFFF; color: #3A4654">Own child</span>a parent's children</span>
+        <span style="display: inline-flex; align-items: center; gap: 8px"><span style="padding: 3px 8px; border-radius: 6px; font-size: 12px; font-weight: 700; border: 1px solid #C7CDD6; background: #FFFFFF; color: #3A4654">Self</span>their own record</span>
+      </div>
+
+      <sc-if value="{{hasChanges}}" hint-placeholder-val="{{ false }}">
+        <div role="status" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; padding: 12px 16px; border-radius: 12px; background: #FEF3C7; color: #92400E">
+          <span style="flex: 1 1 240px; font-size: 14px; font-weight: 700">{{changesText}}</span>
+          <button type="button" onClick="{{discard}}" style="height: 44px; padding: 0 16px; border: 1px solid #F59E0B; border-radius: 10px; background: #FFFFFF; font: inherit; font-size: 14px; font-weight: 600; color: #92400E; cursor: pointer">Discard</button>
+          <button type="button" onClick="{{save}}" style="height: 44px; padding: 0 16px; border: 0; border-radius: 10px; background: {{accent}}; font: inherit; font-size: 14px; font-weight: 700; color: #FFFFFF; cursor: pointer">Save changes</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{savedNote}}" hint-placeholder-val="{{ false }}">
+        <div role="status" style="padding: 12px 16px; border-radius: 12px; background: #DCFCE7; color: #166534; font-size: 14px; font-weight: 700">Saved. The change is in the audit log and applies at each person's next request.</div>
+      </sc-if>
+
+      <section aria-label="Permission matrix" style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 14px; overflow: hidden">
+        <div style="overflow-x: auto">
+          <div style="min-width: 1000px">
+            <div style="display: grid; grid-template-columns: minmax(220px, 1.6fr) repeat(7, minmax(108px, 1fr)); gap: 8px; align-items: end; padding: 14px 16px; background: #F9FAFB; border-bottom: 1px solid #E3E6EB">
+              <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #5E6977">Permission</span>
+              <sc-for list="{{roles}}" as="r" hint-placeholder-count="7">
+                <div style="text-align: center">
+                  <p style="margin: 0; font-size: 13px; font-weight: 700">{{r.name}}</p>
+                  <p class="num" style="margin: 2px 0 0; font-size: 12px; color: #5E6977">{{r.count}}</p>
+                </div>
+              </sc-for>
+            </div>
+            <sc-for list="{{groups}}" as="g" hint-placeholder-count="5">
+              <div>
+                <p style="margin: 0; padding: 14px 16px 6px; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #5E6977">{{g.title}}</p>
+                <sc-for list="{{g.rows}}" as="row" hint-placeholder-count="3">
+                  <div style="display: grid; grid-template-columns: minmax(220px, 1.6fr) repeat(7, minmax(108px, 1fr)); gap: 8px; align-items: center; padding: 4px 16px; border-bottom: 1px solid #EEF0F3">
+                    <span style="font-size: 14px; font-weight: 500">{{row.label}}</span>
+                    <sc-for list="{{row.cells}}" as="c" hint-placeholder-count="7">
+                      <button type="button" aria-label="{{c.aria}}" onClick="{{c.pick}}" style="min-height: 44px; width: 100%; padding: 0 6px; border-radius: 8px; border: 1px solid {{c.bd}}; background: {{c.bg}}; color: {{c.fg}}; box-shadow: {{c.ring}}; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer">{{c.text}}</button>
+                    </sc-for>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#13795B","options":["#13795B","#1D4ED8","#6D28D9","#B45309"]},"$preview":{"width":1440,"height":1000}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accent ?? '#13795B';
+    const st = this.state || {};
+    const roles = [
+      ['Principal', '1 person'], ['Office admin', '3 people'], ['Accountant', '2 people'],
+      ['Class teacher', '36 people'], ['Subject teacher', '58 people'], ['Parent', '2,140 people'], ['Student', '1,218 people']
+    ];
+    const W = 'Whole school';
+    const C = 'Own class';
+    const S = 'Own sections';
+    const K = 'Own child';
+    const M = 'Self';
+    const N = 'None';
+    const table = [
+      ['Students', [
+        ['View student profiles', [W, W, W, C, S, K, M]],
+        ['Edit student profiles', [W, W, N, C, N, N, N]],
+        ['Import students from a sheet', [W, W, N, N, N, N, N]]
+      ]],
+      ['Attendance', [
+        ['Mark attendance', [W, W, N, C, S, N, N]],
+        ['Change past attendance', [W, N, N, C, N, N, N]],
+        ['See attendance reports', [W, W, N, C, S, K, M]]
+      ]],
+      ['Exams and marks', [
+        ['Enter marks', [N, N, N, C, S, N, N]],
+        ['Publish results', [W, N, N, N, N, N, N]],
+        ['See report cards', [W, W, N, C, S, K, M]]
+      ]],
+      ['Fees', [
+        ['Collect fees', [W, W, W, N, N, N, N]],
+        ['Waive or discount fees', [W, N, N, N, N, N, N]],
+        ['See fee dues', [W, W, W, C, N, K, N]]
+      ]],
+      ['Administration', [
+        ['Manage roles and access', [W, N, N, N, N, N, N]],
+        ['Change school settings', [W, W, N, N, N, N, N]]
+      ]]
+    ];
+    const cycle = [W, C, S, K, M, N];
+    const base = st.base || {};
+    const over = st.over || {};
+    const look = (v) => {
+      if (v === W) return { bg: accent, fg: '#FFFFFF', bd: accent };
+      if (v === C || v === S) return { bg: accent + '14', fg: accent, bd: accent + '4D' };
+      if (v === K || v === M) return { bg: '#FFFFFF', fg: '#3A4654', bd: '#C7CDD6' };
+      return { bg: '#FFFFFF', fg: '#5E6977', bd: '#EEF0F3' };
+    };
+    let changes = 0;
+    const groups = table.map((g, gi) => ({
+      title: g[0],
+      rows: g[1].map((r, ri) => ({
+        label: r[0],
+        cells: r[1].map((def, ci) => {
+          const key = gi + '-' + ri + '-' + ci;
+          const committed = base[key] || def;
+          const val = over[key] || committed;
+          const changed = val !== committed;
+          if (changed) changes += 1;
+          const l = look(val);
+          return {
+            text: val === N ? '—' : val,
+            aria: r[0] + ' for ' + roles[ci][0] + ': ' + (val === N ? 'no access' : val) + '. Activate to change.',
+            bg: l.bg,
+            fg: l.fg,
+            bd: l.bd,
+            ring: changed ? '0 0 0 2px #F59E0B' : 'none',
+            pick: () => {
+              const next = Object.assign({}, over);
+              next[key] = cycle[(cycle.indexOf(val) + 1) % cycle.length];
+              this.setState({ over: next, savedNote: false });
+            }
+          };
+        })
+      }))
+    }));
+    return {
+      accent,
+      accentSoft: accent + '14',
+      accentLine: accent + '4D',
+      roles: roles.map((r) => ({ name: r[0], count: r[1] })),
+      groups,
+      hasChanges: changes > 0,
+      changesText: changes === 1 ? '1 change not saved yet' : changes + ' changes not saved yet',
+      savedNote: !!st.savedNote,
+      discard: () => this.setState({ over: {} }),
+      save: () => this.setState({ base: Object.assign({}, base, over), over: {}, savedNote: true })
+    };
+  }
+}
+</script>
+</body>
+</html>

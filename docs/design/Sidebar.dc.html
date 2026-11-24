@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sidebar</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="box-sizing: border-box; width: 100%; padding: 20px 14px 24px; display: flex; flex-direction: column; gap: 18px; background: #FFFFFF; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #14202E">
+  <div style="display: flex; align-items: center; gap: 12px; padding: 0 6px">
+    <div style="width: 40px; height: 40px; flex: none; border-radius: 10px; background: {{accent}}; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; letter-spacing: 0.02em">SP</div>
+    <div style="min-width: 0">
+      <p style="margin: 0; font-size: 15px; font-weight: 700; line-height: 1.25">Sunrise Public School</p>
+      <p style="margin: 2px 0 0; font-size: 12px; color: #5E6977">Jaipur · CBSE</p>
+    </div>
+  </div>
+
+  <nav aria-label="Main" style="display: flex; flex-direction: column; gap: 2px">
+    <a href="Main.dc.html" aria-current="{{nav.dashboard.current}}" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 14px; font-weight: {{nav.dashboard.weight}}; background: {{nav.dashboard.bg}}; color: {{nav.dashboard.fg}}">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5"></rect><rect x="14" y="3" width="7" height="5" rx="1.5"></rect><rect x="14" y="12" width="7" height="9" rx="1.5"></rect><rect x="3" y="16" width="7" height="5" rx="1.5"></rect></svg>
+      Dashboard
+    </a>
+
+    <sc-if value="{{show.gAcademics}}" hint-placeholder-val="{{ true }}">
+      <p style="margin: 14px 12px 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #5E6977">Academics</p>
+    </sc-if>
+    <sc-if value="{{show.students}}" hint-placeholder-val="{{ true }}">
+      <a href="Students.dc.html" aria-current="{{nav.students.current}}" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 14px; font-weight: {{nav.students.weight}}; background: {{nav.students.bg}}; color: {{nav.students.fg}}">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"></path><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"></path></svg>
+        Students
+      </a>
+    </sc-if>
+    <sc-if value="{{show.classes}}" hint-placeholder-val="{{ true }}">
+      <a href="#" aria-current="{{nav.classes.current}}" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 14px; font-weight: {{nav.classes.weight}}; background: {{nav.classes.bg}}; color: {{nav.classes.fg}}">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2Z"></path><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7Z"></path></svg>
+        Classes &amp; sections
+      </a>
+    </sc-if>
+    <sc-if value="{{show.attendance}}" hint-placeholder-val="{{ true }}">
+      <a href="Attendance.dc.html" aria-current="{{nav.attendance.current}}" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 14px; font-weight: {{nav.attendance.weight}}; background: {{nav.attendance.bg}}; color: {{nav.attendance.fg}}">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path><path d="m9 16 2 2 4-4"></path></svg>
+        Attendance
+        <span style="margin-left: auto; min-width: 22px; height: 22px; padding: 0 6px; box-sizing: border-box; border-radius: 11px; background: #FEF3C7; color: #92400E; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center">2</span>
+      </a>
+    </sc-if>
+    <sc-if value="{{show.timetable}}" hint-placeholder-val="{{ true }}">
+      <a href="#" aria-current="{{nav.timetable.current}}" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 14px; font-weight: {{nav.timetable.weight}}; background: {{nav.timetable.bg}}; color: {{nav.timetable.fg}}">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+        Timetable
+      </a>
+    </sc-if>
+    <sc-if value="{{show.exams}}" hint-placeholder-val="{{ true }}">
+      <a href="#" aria-current="{{nav.exams.current}}" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 14px; font-weight: {{nav.exams.weight}}; background: {{nav.exams.bg}}; color: {{nav.exams.fg}}">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"></path><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"></path></svg>
+        Exams &amp; marks
+      </a>
+    </sc-if>
+
+    <sc-if value="{{show.gStaff}}" hint-placeholder-val="{{ true }}">
+      <p style="margin: 14px 12px 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #5E6977">Staff</p>
+    </sc-if>
+    <sc-if value="{{show.staff}}" hint-placeholder-val="{{ true }}">
+      <a href="#" aria-current="{{nav.staff.current}}" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 14px; font-weight: {{nav.staff.weight}}; background: {{nav.staff.bg}}; color: {{nav.staff.fg}}">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        Staff
+      </a>
+    </sc-if>
+    <sc-if value="{{show.leave}}" hint-placeholder-val="{{ true }}">
+      <a href="#" aria-current="{{nav.leave.current}}" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 14px; font-weight: {{nav.leave.weight}}; background: {{nav.leave.bg}}; color: {{nav.leave.fg}}">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18M9 16h6"></path></svg>
+        Leave
+        <span style="margin-left: auto; min-width: 22px; height: 22px; padding: 0 6px; box-sizing: border-box; border-radius: 11px; background: #FEF3C7; color: #92400E; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center">2</span>
+      </a>
+    </sc-if>
+
+    <sc-if value="{{show.gFinance}}" hint-placeholder-val="{{ true }}">
+      <p style="margin: 14px 12px 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #5E6977">Finance</p>
+    </sc-if>
+    <sc-if value="{{show.fees}}" hint-placeholder-val="{{ true }}">
+      <a href="Fees.dc.html" aria-current="{{nav.fees.current}}" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 14px; font-weight: {{nav.fees.weight}}; background: {{nav.fees.bg}}; color: {{nav.fees.fg}}">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12M6 8h12M6 13l8.5 8M6 13h3M9 13c6.67 0 6.67-10 0-10"></path></svg>
+        Fees
+      </a>
+    </sc-if>
+    <sc-if value="{{show.reports}}" hint-placeholder-val="{{ true }}">
+      <a href="#" aria-current="{{nav.reports.current}}" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 14px; font-weight: {{nav.reports.weight}}; background: {{nav.reports.bg}}; color: {{nav.reports.fg}}">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20V10M18 20V4M6 20v-4"></path></svg>
+        Reports
+      </a>
+    </sc-if>
+
+    <sc-if value="{{show.gComms}}" hint-placeholder-val="{{ true }}">
+      <p style="margin: 14px 12px 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #5E6977">Communication</p>
+    </sc-if>
+    <sc-if value="{{show.notices}}" hint-placeholder-val="{{ true }}">
+      <a href="#" aria-current="{{nav.notices.current}}" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 14px; font-weight: {{nav.notices.weight}}; background: {{nav.notices.bg}}; color: {{nav.notices.fg}}">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 18-5v12L3 14v-3Z"></path><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"></path></svg>
+        Notices
+      </a>
+    </sc-if>
+    <sc-if value="{{show.messages}}" hint-placeholder-val="{{ true }}">
+      <a href="#" aria-current="{{nav.messages.current}}" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 14px; font-weight: {{nav.messages.weight}}; background: {{nav.messages.bg}}; color: {{nav.messages.fg}}">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"></path></svg>
+        Parent messages
+        <span style="margin-left: auto; min-width: 22px; height: 22px; padding: 0 6px; box-sizing: border-box; border-radius: 11px; background: #EEF0F3; color: #3A4654; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center">5</span>
+      </a>
+    </sc-if>
+
+    <sc-if value="{{show.gAdmin}}" hint-placeholder-val="{{ true }}">
+      <p style="margin: 14px 12px 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #5E6977">Administration</p>
+    </sc-if>
+    <sc-if value="{{show.roles}}" hint-placeholder-val="{{ true }}">
+      <a href="Roles.dc.html" aria-current="{{nav.roles.current}}" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 14px; font-weight: {{nav.roles.weight}}; background: {{nav.roles.bg}}; color: {{nav.roles.fg}}">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path><path d="m9 12 2 2 4-4"></path></svg>
+        Roles &amp; access
+      </a>
+    </sc-if>
+    <sc-if value="{{show.settings}}" hint-placeholder-val="{{ true }}">
+      <a href="#" aria-current="{{nav.settings.current}}" style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 14px; font-weight: {{nav.settings.weight}}; background: {{nav.settings.bg}}; color: {{nav.settings.fg}}">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"></path></svg>
+        School settings
+      </a>
+    </sc-if>
+  </nav>
+
+  <div style="display: flex; gap: 10px; align-items: flex-start; padding: 12px; border: 1px solid #E3E6EB; border-radius: 12px; background: #F9FAFB">
+    <span aria-hidden="true" style="width: 8px; height: 8px; flex: none; margin-top: 6px; border-radius: 50%; background: #15803D"></span>
+    <div style="min-width: 0">
+      <p style="margin: 0; font-size: 13px; font-weight: 600">All changes saved</p>
+      <p style="margin: 2px 0 0; font-size: 12px; color: #5E6977">Google Sheets · synced 9:12 AM</p>
+    </div>
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 10px; padding: 0 4px">
+    <div aria-hidden="true" style="width: 40px; height: 40px; flex: none; border-radius: 50%; background: {{accentSoft}}; color: {{accent}}; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px">{{me.initials}}</div>
+    <div style="min-width: 0; flex: 1">
+      <p style="margin: 0; font-size: 14px; font-weight: 600">{{me.name}}</p>
+      <p style="margin: 2px 0 0; font-size: 12px; color: #5E6977">{{me.title}}</p>
+    </div>
+    <button type="button" aria-label="Account menu" style="width: 44px; height: 44px; flex: none; border: 0; border-radius: 10px; background: transparent; color: #3A4654; display: flex; align-items: center; justify-content: center; cursor: pointer">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+    </button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"active":{"editor":"enum","options":["dashboard","students","classes","attendance","timetable","exams","staff","leave","fees","reports","notices","messages","roles","settings"],"default":"dashboard"},"persona":{"editor":"enum","options":["principal","teacher","accountant"],"default":"principal"},"accent":{"editor":"color","default":"#13795B","options":["#13795B","#1D4ED8","#6D28D9","#B45309"]},"$preview":{"width":248,"height":1000}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accent ?? '#13795B';
+    const active = this.props.active ?? 'dashboard';
+    const persona = this.props.persona ?? 'principal';
+    const keys = ['dashboard', 'students', 'classes', 'attendance', 'timetable', 'exams', 'staff', 'leave', 'fees', 'reports', 'notices', 'messages', 'roles', 'settings'];
+    const visibleBy = {
+      principal: keys,
+      teacher: ['dashboard', 'students', 'attendance', 'timetable', 'exams', 'leave', 'notices', 'messages'],
+      accountant: ['dashboard', 'students', 'fees', 'reports', 'notices', 'settings']
+    };
+    const visible = visibleBy[persona] || keys;
+    const show = {};
+    const nav = {};
+    keys.forEach((k) => {
+      const on = k === active;
+      show[k] = visible.indexOf(k) >= 0;
+      nav[k] = {
+        bg: on ? accent + '14' : 'transparent',
+        fg: on ? accent : '#3A4654',
+        weight: on ? '700' : '500',
+        current: on ? 'page' : undefined
+      };
+    });
+    show.gAcademics = show.students || show.classes || show.attendance || show.timetable || show.exams;
+    show.gStaff = show.staff || show.leave;
+    show.gFinance = show.fees || show.reports;
+    show.gComms = show.notices || show.messages;
+    show.gAdmin = show.roles || show.settings;
+    const people = {
+      principal: { name: 'Anita Kapoor', title: 'Principal', initials: 'AK' },
+      teacher: { name: 'Meera Iyer', title: 'Class teacher · 7-B', initials: 'MI' },
+      accountant: { name: 'Rohit Joshi', title: 'Accounts office', initials: 'RJ' }
+    };
+    return { accent, accentSoft: accent + '1F', show, nav, me: people[persona] || people.principal };
+  }
+}
+</script>
+</body>
+</html>

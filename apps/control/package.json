@@ -1,0 +1,41 @@
+{
+  "name": "@school/control",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Control console: the vendor's register and monitor of every onboarded school.",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -n server,web -c yellow,magenta \"npm:dev:server\" \"npm:dev:web\"",
+    "dev:server": "tsx watch server/main.ts",
+    "dev:web": "vite --config web/vite.config.ts",
+    "build": "tsc -p web/tsconfig.json --noEmit && vite build --config web/vite.config.ts",
+    "start": "tsx server/main.ts",
+    "init": "tsx scripts/init.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit && tsc -p web/tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@fontsource-variable/fraunces": "^5.3.0",
+    "@fontsource-variable/source-sans-3": "^5.3.0",
+    "@hono/node-server": "^2.1.0",
+    "@school/core": "*",
+    "@school/server": "*",
+    "@tanstack/react-query": "^5.90.0",
+    "hono": "^4.13.0",
+    "jose": "^6.2.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.9.0",
+    "tsx": "^4.23.0",
+    "zod": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^6.0.0",
+    "typescript": "^5.9.0",
+    "vite": "^8.0.0",
+    "vitest": "^5.1.0"
+  }
+}

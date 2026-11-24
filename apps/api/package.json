@@ -1,0 +1,29 @@
+{
+  "name": "@school/api",
+  "version": "0.1.0",
+  "private": true,
+  "description": "School ERP API. The only part that touches storage.",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "start": "tsx src/server.ts",
+    "init": "tsx scripts/init.ts",
+    "sheets:check": "tsx scripts/sheets-check.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@hono/node-server": "^2.1.0",
+    "@school/core": "*",
+    "@school/server": "*",
+    "hono": "^4.13.0",
+    "jose": "^6.2.0",
+    "tsx": "^4.23.0",
+    "zod": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.0",
+    "vitest": "^5.1.0"
+  }
+}

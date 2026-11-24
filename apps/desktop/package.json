@@ -1,0 +1,14 @@
+{
+  "name": "@school/desktop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Windows app (Tauri 2) that wraps the web UI. Build the installer on Windows.",
+  "scripts": {
+    "dev": "tauri dev",
+    "build": "tauri build",
+    "icons": "tauri icon app-icon.svg"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.0.0"
+  }
+}

@@ -1,0 +1,30 @@
+# dependencies
+node_modules/
+
+# builds
+dist/
+apps/desktop/src-tauri/target/
+apps/desktop/src-tauri/gen/
+
+# local data and secrets
+.env
+.env.*
+!.env.example
+!apps/web/.env.desktop
+.data/
+*.pem
+service-account*.json
+
+# logs and OS files
+*.log
+.DS_Store
+Thumbs.db
+
+# editors
+.vscode/
+.idea/
+
+# end-to-end test output
+e2e/.results/
+e2e/.screens/
+playwright-report/

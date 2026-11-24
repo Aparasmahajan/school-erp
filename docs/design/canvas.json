@@ -1,0 +1,38 @@
+{
+  "v": 3,
+  "createdOnFiles": { "v": 1, "at": "2026-11-24T10:00:00Z" },
+  "title": "School ERP Redesign",
+  "launch": { "view": "canvas" },
+  "pages": [],
+  "boards": {
+    "Main.dc.html": { "x": 0, "y": 1400, "w": 1440, "h": 1080, "title": "Dashboard · principal", "expand": "fill", "is_interactive": true },
+    "Attendance.dc.html": { "x": 1520, "y": 1400, "w": 1440, "h": 1240, "title": "Attendance · class teacher", "expand": "fill", "is_interactive": true },
+    "Students.dc.html": { "x": 3040, "y": 1400, "w": 1440, "h": 1120, "title": "Students · directory and profile", "expand": "fill", "is_interactive": true },
+    "Fees.dc.html": { "x": 0, "y": 2760, "w": 1440, "h": 1080, "title": "Fees · collection counter", "expand": "fill", "is_interactive": true },
+    "Roles.dc.html": { "x": 1520, "y": 2760, "w": 1440, "h": 1000, "title": "Roles & Access", "expand": "fill", "is_interactive": true },
+    "Sidebar.dc.html": { "x": 3040, "y": 2760, "w": 248, "h": 1000, "title": "Sidebar (shared component)" },
+    "Current.dc.html": { "x": 0, "y": 0, "w": 1280, "h": 980, "title": "Current portal · Attendance tab", "expand": "fill" }
+  },
+  "order": [
+    "Main.dc.html",
+    "Current.dc.html",
+    "Attendance.dc.html",
+    "Students.dc.html",
+    "Fees.dc.html",
+    "Roles.dc.html",
+    "Sidebar.dc.html"
+  ],
+  "notes": {
+    "t_before": { "x": 0, "y": -300, "text": "Today's portal, recreated from the code", "kind": "title1", "maxW": 2400 },
+    "n_issues": {
+      "x": 1360, "y": 0, "w": 460, "fill": "orange", "size": "m",
+      "text": "What needs fixing on this screen\n\n1. Staff and students share one flat list, with no class or section filter. A class teacher scrolls the whole school.\n2. Five buttons per row, and every click saves on its own. One class of 40 is about 40 requests, which trips the Google Sheets limit at 9 AM.\n3. The header shows the URL slug, not the school's name or logo.\n4. Emoji icons look different on Windows, and a top tab bar can't hold the 12+ modules a school needs.\n5. Role colour dots never appear for 11 of 18 roles: Tailwind doesn't generate those classes.\n6. Grey labels (#94A3B8) are about 2.6:1 contrast, below the 4.5:1 minimum.\n7. No saved state, no sync or offline indicator, no undo."
+    },
+    "n_elsewhere": {
+      "x": 1900, "y": 0, "w": 460, "fill": "gray", "size": "m",
+      "text": "Elsewhere in the current app\n\n• People: no pagination, class filter or bulk import. Schools load hundreds of students from a spreadsheet.\n• Invite links appear as raw text, with no Copy or Send button.\n• Archive and reject use the browser's own confirm()/prompt() boxes.\n• Roles & Powers is read-only in the real portal. The editable permission matrix exists only in the demo.\n• Hierarchy is an indented text tree, which means nothing for students.\n• The dashboard counts people and roles, not what a principal checks each morning."
+    },
+    "t_after": { "x": 0, "y": 1100, "text": "Proposed: School ERP for web and Windows", "kind": "title1", "maxW": 4480 }
+  },
+  "designSystems": []
+}

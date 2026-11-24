@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fees · Collection counter</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#0F5E4D}a:hover{color:#0B4538}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.num{font-variant-numeric:tabular-nums}
+</style>
+</helmet>
+<div style="min-height: 100vh; display: flex; flex-wrap: wrap; background: #F5F6F8; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #14202E">
+  <div style="flex: 1 1 248px; min-width: 0; background: #FFFFFF; border-right: 1px solid #E3E6EB">
+    <dc-import name="Sidebar" active="fees" persona="accountant" accent="{{accent}}" hint-size="100%,1000px"></dc-import>
+  </div>
+
+  <div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column">
+    <header style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding: 16px 32px; background: #FFFFFF; border-bottom: 1px solid #E3E6EB">
+      <div style="flex: 1 1 220px; min-width: 0">
+        <p style="margin: 0; font-size: 13px; color: #5E6977">Fees · Tuesday, 24 November 2026</p>
+        <h1 style="margin: 2px 0 0; font-size: 22px; font-weight: 700; letter-spacing: -0.01em">Collect a payment</h1>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px">
+        <div style="padding: 8px 14px; border-radius: 10px; background: #F5F6F8"><p style="margin: 0; font-size: 12px; color: #5E6977">Collected today</p><p class="num" style="margin: 0; font-size: 16px; font-weight: 800">₹1,42,300 <span style="font-size: 12px; font-weight: 600; color: #5E6977">· 38 receipts</span></p></div>
+        <div style="padding: 8px 14px; border-radius: 10px; background: #F5F6F8"><p style="margin: 0; font-size: 12px; color: #5E6977">Cash / UPI / Cheque</p><p class="num" style="margin: 0; font-size: 16px; font-weight: 800">₹46.5k · ₹88.8k · ₹7k</p></div>
+      </div>
+      <button type="button" style="height: 44px; padding: 0 16px; border: 1px solid #D5DAE1; border-radius: 10px; background: #FFFFFF; font: inherit; font-size: 14px; font-weight: 600; color: #14202E; cursor: pointer">Day book</button>
+    </header>
+
+    <main style="box-sizing: border-box; width: 100%; max-width: 1240px; padding: 24px 32px 48px; display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start">
+      <div style="flex: 3 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+        <section style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 14px">
+          <label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A4654">
+            Student
+            <input type="search" value="Diya" style="height: 44px; padding: 0 12px; box-sizing: border-box; border: 1px solid #D5DAE1; border-radius: 10px; background: #FFFFFF; font: inherit; font-size: 14px; color: #14202E">
+          </label>
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px; padding: 14px; border-radius: 12px; border: 1px solid {{accentLine}}; background: {{accentSoft}}">
+            <div aria-hidden="true" style="width: 48px; height: 48px; flex: none; border-radius: 50%; background: #FFFFFF; color: {{accent}}; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 800">DP</div>
+            <div style="flex: 1 1 200px; min-width: 0">
+              <p style="margin: 0; font-size: 16px; font-weight: 800">Diya Patel</p>
+              <p class="num" style="margin: 2px 0 0; font-size: 13px; color: #3A4654">7-C · Roll 4 · Adm 2019/0447</p>
+              <p class="num" style="margin: 2px 0 0; font-size: 13px; color: #3A4654">Mother: Hetal Patel · +91 98290 ••962</p>
+            </div>
+            <div style="font-size: 13px; color: #3A4654">Sibling: Kavya Patel, 3-A · <span style="font-weight: 700">no dues</span></div>
+          </div>
+        </section>
+
+        <section style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 14px; overflow: hidden">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 16px 20px; border-bottom: 1px solid #E3E6EB">
+            <h2 style="margin: 0; font-size: 16px; font-weight: 700">What to collect</h2>
+            <span style="font-size: 13px; color: #5E6977">Tick the items being paid</span>
+          </div>
+          <sc-for list="{{dues}}" as="d" hint-placeholder-count="4">
+            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; padding: 12px 20px; border-bottom: 1px solid #EEF0F3">
+              <label style="flex: 1 1 260px; min-width: 0; display: flex; align-items: center; gap: 12px; min-height: 44px; cursor: pointer">
+                <input type="checkbox" checked="{{d.checked}}" onChange="{{d.toggle}}" style="width: 20px; height: 20px; margin: 0; flex: none; accent-color: {{accent}}">
+                <span style="min-width: 0">
+                  <span style="display: block; font-size: 14px; font-weight: 600">{{d.label}}</span>
+                  <span style="display: block; margin-top: 2px; font-size: 12px; color: #5E6977">{{d.due}}</span>
+                </span>
+              </label>
+              <span style="padding: 3px 8px; border-radius: 6px; font-size: 12px; font-weight: 700; background: {{d.tagBg}}; color: {{d.tagFg}}">{{d.tag}}</span>
+              <sc-if value="{{d.waivable}}" hint-placeholder-val="{{ false }}">
+                <button type="button" style="min-height: 44px; padding: 0 10px; border: 0; background: transparent; font: inherit; font-size: 13px; font-weight: 700; color: {{accent}}; cursor: pointer">Request waiver</button>
+              </sc-if>
+              <span class="num" style="width: 90px; text-align: right; font-size: 15px; font-weight: 700">{{d.amount}}</span>
+            </div>
+          </sc-for>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; background: #F9FAFB">
+            <span style="font-size: 14px; font-weight: 700">Total</span>
+            <span class="num" style="font-size: 20px; font-weight: 800">{{total}}</span>
+          </div>
+        </section>
+
+        <section style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 14px">
+          <h2 style="margin: 0; font-size: 16px; font-weight: 700">Payment</h2>
+          <div role="radiogroup" aria-label="Payment mode" style="display: flex; flex-wrap: wrap; gap: 6px">
+            <sc-for list="{{modes}}" as="m" hint-placeholder-count="5">
+              <button type="button" role="radio" aria-checked="{{m.on}}" onClick="{{m.pick}}" style="min-width: 84px; height: 44px; padding: 0 14px; border-radius: 10px; border: 1px solid {{m.bd}}; background: {{m.bg}}; color: {{m.fg}}; font: inherit; font-size: 14px; font-weight: {{m.weight}}; cursor: pointer">{{m.label}}</button>
+            </sc-for>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px">
+            <label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A4654">
+              {{refLabel}}
+              <input type="text" value="{{ref}}" onChange="{{setRef}}" style="height: 44px; padding: 0 12px; box-sizing: border-box; border: 1px solid #D5DAE1; border-radius: 10px; background: #FFFFFF; font: inherit; font-size: 14px; color: #14202E">
+            </label>
+            <label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; color: #3A4654">
+              Received from
+              <select style="height: 44px; padding: 0 12px; border: 1px solid #D5DAE1; border-radius: 10px; background: #FFFFFF; font: inherit; font-size: 14px; color: #14202E"><option>Hetal Patel (mother)</option><option>Manish Patel (father)</option></select>
+            </label>
+          </div>
+        </section>
+      </div>
+
+      <div style="flex: 2 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+        <section aria-label="Receipt preview" style="background: #FFFFFF; border: 1px solid #E3E6EB; border-radius: 14px; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px">
+          <div style="display: flex; align-items: center; gap: 12px; padding-bottom: 14px; border-bottom: 1px dashed #D5DAE1">
+            <div aria-hidden="true" style="width: 40px; height: 40px; flex: none; border-radius: 10px; background: {{accent}}; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px">SP</div>
+            <div style="flex: 1; min-width: 0">
+              <p style="margin: 0; font-size: 15px; font-weight: 800">Sunrise Public School</p>
+              <p style="margin: 2px 0 0; font-size: 12px; color: #5E6977">Jaipur · CBSE affiliation [YOUR AFFILIATION NO.]</p>
+            </div>
+          </div>
+          <div style="display: flex; justify-content: space-between; gap: 8px; font-size: 13px">
+            <div><p style="margin: 0; color: #5E6977">Fee receipt</p><p class="num" style="margin: 2px 0 0; font-weight: 700">SPS/26-27/04821</p></div>
+            <div style="text-align: right"><p style="margin: 0; color: #5E6977">Date</p><p class="num" style="margin: 2px 0 0; font-weight: 700">24 Nov 2026</p></div>
+          </div>
+          <p style="margin: 0; font-size: 13px; color: #3A4654">Diya Patel · 7-C · Adm 2019/0447<br>Paid by Hetal Patel (mother)</p>
+          <div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 0; border-top: 1px solid #EEF0F3; border-bottom: 1px solid #EEF0F3">
+            <sc-for list="{{picked}}" as="p" hint-placeholder-count="3">
+              <div style="display: flex; justify-content: space-between; gap: 12px; font-size: 13px">
+                <span>{{p.label}}</span><span class="num" style="font-weight: 600">{{p.amount}}</span>
+              </div>
+            </sc-for>
+            <div style="display: flex; justify-content: space-between; gap: 12px; margin-top: 6px; font-size: 15px; font-weight: 800">
+              <span>Total</span><span class="num">{{total}}</span>
+            </div>
+          </div>
+          <p style="margin: 0; font-size: 13px; color: #3A4654">{{inWords}}</p>
+          <p class="num" style="margin: 0; font-size: 13px; color: #3A4654">Mode: {{modeLabel}}{{refShown}}</p>
+          <p style="margin: 0; font-size: 12px; color: #5E6977">Received by Rohit Joshi, Accounts office. Computer-generated receipt; no signature needed.</p>
+        </section>
+
+        <sc-if value="{{collected}}" hint-placeholder-val="{{ false }}">
+          <div role="status" style="padding: 12px 14px; border-radius: 10px; background: #DCFCE7; color: #166534; font-size: 14px; font-weight: 700">Saved to the fee ledger and sent to the printer. A copy went to Hetal Patel by SMS.</div>
+        </sc-if>
+        <button type="button" onClick="{{collect}}" disabled="{{nothing}}" style="min-height: 52px; border: 0; border-radius: 12px; background: {{accent}}; color: #FFFFFF; font: inherit; font-size: 15px; font-weight: 700; cursor: pointer; opacity: {{btnOpacity}}">{{collectLabel}}</button>
+      </div>
+    </main>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#13795B","options":["#13795B","#1D4ED8","#6D28D9","#B45309"]},"$preview":{"width":1440,"height":1080}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accent ?? '#13795B';
+    const st = this.state || {};
+    const inr = (n) => '₹' + n.toLocaleString('en-IN');
+    const items = [
+      { id: 't2', label: 'Tuition · Term 2 (Oct–Dec)', due: 'Was due 10 Oct', amount: 9800, tag: 'Overdue', tagBg: '#FFEDD5', tagFg: '#9A3412' },
+      { id: 'tr11', label: 'Transport · Route 4 · November', due: 'Was due 10 Nov', amount: 1600, tag: 'Overdue', tagBg: '#FFEDD5', tagFg: '#9A3412' },
+      { id: 'late', label: 'Late fee · Term 2', due: 'Added 25 Oct', amount: 200, tag: 'Penalty', tagBg: '#EEF0F3', tagFg: '#3A4654', waivable: true },
+      { id: 'tr12', label: 'Transport · Route 4 · December', due: 'Due 10 Dec', amount: 1600, tag: 'Upcoming', tagBg: '#E0E7FF', tagFg: '#3730A3' }
+    ];
+    const sel = st.sel || { t2: true, tr11: true, late: true, tr12: false };
+    const dues = items.map((it) => ({
+      label: it.label,
+      due: it.due,
+      amount: inr(it.amount),
+      tag: it.tag,
+      tagBg: it.tagBg,
+      tagFg: it.tagFg,
+      waivable: !!it.waivable,
+      checked: !!sel[it.id],
+      toggle: () => {
+        const next = Object.assign({}, sel);
+        next[it.id] = !sel[it.id];
+        this.setState({ sel: next, collected: false });
+      }
+    }));
+    const pickedItems = items.filter((it) => sel[it.id]);
+    const sum = pickedItems.reduce((a, it) => a + it.amount, 0);
+    const picked = pickedItems.map((it) => ({ label: it.label, amount: inr(it.amount) }));
+
+    const ones = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+    const tens = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+    const two = (n) => (n < 20 ? ones[n] : tens[Math.floor(n / 10)] + (n % 10 ? ' ' + ones[n % 10] : ''));
+    const three = (n) => {
+      const h = Math.floor(n / 100);
+      const r = n % 100;
+      return (h ? ones[h] + ' Hundred' + (r ? ' ' : '') : '') + (r ? two(r) : '');
+    };
+    const words = (n) => {
+      if (n === 0) return 'Zero';
+      const parts = [];
+      const lakh = Math.floor(n / 100000);
+      const thousand = Math.floor((n % 100000) / 1000);
+      const rest = n % 1000;
+      if (lakh) parts.push(two(lakh) + ' Lakh');
+      if (thousand) parts.push(two(thousand) + ' Thousand');
+      if (rest) parts.push(three(rest));
+      return parts.join(' ');
+    };
+
+    const modeList = [
+      ['cash', 'Cash', 'Reference (optional)'],
+      ['upi', 'UPI', 'UPI transaction ID'],
+      ['card', 'Card', 'Card slip number'],
+      ['cheque', 'Cheque', 'Cheque number and bank'],
+      ['bank', 'Bank transfer', 'UTR number']
+    ];
+    const mode = st.mode || 'upi';
+    const modes = modeList.map((m) => {
+      const on = m[0] === mode;
+      return {
+        label: m[1],
+        on: on,
+        bd: on ? accent : '#D5DAE1',
+        bg: on ? accent : '#FFFFFF',
+        fg: on ? '#FFFFFF' : '#3A4654',
+        weight: on ? '700' : '500',
+        pick: () => this.setState({ mode: m[0], collected: false })
+      };
+    });
+    const current = modeList.find((m) => m[0] === mode);
+    const ref = st.ref === undefined ? '430211876650' : st.ref;
+    const collected = !!st.collected;
+    return {
+      accent,
+      accentSoft: accent + '0F',
+      accentLine: accent + '40',
+      dues,
+      picked,
+      total: inr(sum),
+      inWords: 'Rupees ' + words(sum) + ' only',
+      modes,
+      refLabel: current[2],
+      ref,
+      setRef: (e) => this.setState({ ref: e.target.value }),
+      modeLabel: current[1],
+      refShown: ref ? ' · ref ' + ref : '',
+      collected,
+      nothing: sum === 0,
+      btnOpacity: sum === 0 ? '0.5' : '1',
+      collectLabel: collected ? 'Collected · print again' : sum === 0 ? 'Tick something to collect' : 'Collect ' + inr(sum) + ' and print receipt',
+      collect: () => this.setState({ collected: true })
+    };
+  }
+}
+</script>
+</body>
+</html>

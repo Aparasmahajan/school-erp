@@ -1,0 +1,25 @@
+{
+  "name": "@school/server",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Server building blocks shared by the school API and the Control console: storage (Sheets / file / memory), errors, request parsing, passwords, rate limiting.",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "types": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@googleapis/sheets": "^18.1.0",
+    "@school/core": "*",
+    "bcryptjs": "^3.0.3",
+    "hono": "^4.13.0",
+    "zod": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.0"
+  }
+}
